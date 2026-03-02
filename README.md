@@ -1,40 +1,15 @@
 # Neural Tensiometry: AI-Powered Surface Tension Measurement
 
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.8+-orange.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)
-
-*Automated surface tension measurement from droplet images using deep learning*
-
-**1000× faster than conventional methods | 99%+ accuracy | Zero manual tuning**
-
-[Quick Start](#quick-start) • [Demo](#demo) • [Installation](#installation) • [Usage](#usage) • [How It Works](#how-it-works) • [Citation](#citation)
-
-</div>
-
 ---
 
-## 🎯 Overview
+##  Overview
 
 This project implements a complete machine learning system for **pendant drop tensiometry** - measuring surface tension from hanging droplet images. The system achieves research-grade accuracy while being **1000 times faster** than conventional iterative shape-fitting methods.
 
-### Key Features
-
-- ⚡ **Ultra-fast**: Predicts surface tension in <1 second (vs 15 minutes conventional)
-- 🎯 **Accurate**: 99%+ correlation with ground truth (MAE = 0.119)
-- 🤖 **Fully Automated**: Zero manual parameter tuning required
-- 📊 **High-throughput**: Process 1000+ images per hour
-- 🔬 **Validated**: Replicates published research results (Kratz & Kierfeld 2020)
-- 🎓 **Production-ready**: Clean, modular code with comprehensive documentation
-
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
-Get up and running in 3 minutes:
 ```bash
 # 1. Clone repository
 git clone https://github.com/sl237-lee/pendant-drop-tensiometry-ml.git
@@ -58,7 +33,7 @@ python predict_from_image.py data/test_droplet_image.png
 
 ---
 
-## 📸 Demo
+## Demo
 
 ### Prediction Accuracy
 
@@ -80,7 +55,7 @@ python predict_from_image.py data/test_droplet_image.png
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### System Requirements
 
@@ -367,35 +342,7 @@ Loss: Mean Squared Error (MSE)
 
 ---
 
-## �� Performance Metrics
-
-### Accuracy
-
-| Metric | Value | Comparison |
-|--------|-------|------------|
-| Test MSE | 0.027 | Research-grade |
-| Test MAE | 0.119 | Excellent |
-| R² Score | >0.99 | Near-perfect |
-| Bo Error | ±0.094 | <5% typical |
-| p̃_L Error | ±0.143 | <5% typical |
-
-### Speed
-
-| Method | Time per Image | Speedup |
-|--------|---------------|---------|
-| **This System** | <1 second | **1000×** |
-| Conventional Fitting | 15 minutes | 1× |
-| Published Paper | ~30 ms | ~30× |
-
-### Throughput
-
-- **Single prediction:** <1 second
-- **Batch processing:** 1000+ images/hour
-- **Training:** 15 minutes (CPU), 3 minutes (GPU)
-
----
-
-## 📁 Project Structure
+## Project Structure
 ```
 pendant-drop-tensiometry-ml/
 │
@@ -463,8 +410,6 @@ pendant-drop-tensiometry-ml/
 
 ---
 
-## 🎓 For Students & Researchers
-
 ### Getting Started
 
 1. **Clone and explore:** Start with `test_trained_model.py` to see predictions
@@ -512,149 +457,4 @@ python scripts/generate_dataset.py --shape_class 3
 
 ---
 
-## 🔧 Troubleshooting
 
-### Common Issues
-
-#### 1. ModuleNotFoundError
-
-**Problem:** `ModuleNotFoundError: No module named 'tensorflow'`
-
-**Solution:**
-```bash
-# Make sure virtual environment is activated
-source .venv/bin/activate  # Mac/Linux
-.venv\Scripts\activate     # Windows
-
-# Reinstall dependencies
-pip install -r requirements.txt
-```
-
-#### 2. Model File Not Found
-
-**Problem:** `FileNotFoundError: models/pendant_drop_model_best.h5`
-
-**Solution:** The trained model files are too large for GitHub. Options:
-1. **Train your own:** Run `python scripts/train_model.py`
-2. **Download pre-trained:** Check [Releases](https://github.com/sl237-lee/pendant-drop-tensiometry-ml/releases)
-
-#### 3. Import Errors
-
-**Problem:** `ImportError: cannot import name 'trapz'`
-
-**Solution:** NumPy 2.0+ renamed `trapz` to `trapezoid`. Update the code:
-```python
-# Old
-np.trapz(...)
-
-# New
-np.trapezoid(...)
-```
-
-Or run: `python fix_numpy.py`
-
-#### 4. Low Accuracy on Real Images
-
-**Problem:** Predictions are way off on real droplet photos
-
-**Solution:** This usually means **calibration is wrong**. You need to:
-1. Measure something of known size in the image (e.g., capillary diameter)
-2. Calculate: `pixel_to_mm = real_size_mm / pixels`
-3. Use correct value: `python predict_from_image.py image.jpg --pixel_to_mm 0.048`
-
----
-
-## 📚 Citation
-
-If you use this code in your research, please cite:
-```bibtex
-@software{lee2026neural,
-  author = {Lee, Seungryul Andrew},
-  title = {Neural Tensiometry: AI-Powered Surface Tension Measurement},
-  year = {2026},
-  publisher = {GitHub},
-  url = {https://github.com/sl237-lee/pendant-drop-tensiometry-ml}
-}
-```
-
-**Original methodology:**
-```bibtex
-@article{kratz2020pendant,
-  title={Pendant drop tensiometry: A machine learning approach},
-  author={Kratz, Felix S and Kierfeld, Jan},
-  journal={The Journal of Chemical Physics},
-  volume={153},
-  number={9},
-  pages={094102},
-  year={2020},
-  publisher={AIP Publishing},
-  doi={10.1063/5.0018814}
-}
-```
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-**Summary:** You can freely use, modify, and distribute this code, even commercially, as long as you include the original license.
-
----
-
-## 🙏 Acknowledgments
-
-- **Original Research:** Felix S. Kratz & Jan Kierfeld for the groundbreaking paper
-- **Course:** Math 451 - Machine Learning in Physics
-- **Lab Team:** For future experimental validation and calibration
-
----
-
-## 📧 Contact & Support
-
-**Author:** Seungryul Andrew Lee  
-**GitHub:** [@sl237-lee](https://github.com/sl237-lee)  
-**Project:** [pendant-drop-tensiometry-ml](https://github.com/sl237-lee/pendant-drop-tensiometry-ml)
-
-### Get Help
-
-- **Issues:** [Report bugs or request features](https://github.com/sl237-lee/pendant-drop-tensiometry-ml/issues)
-- **Discussions:** [Ask questions or share ideas](https://github.com/sl237-lee/pendant-drop-tensiometry-ml/discussions)
-- **Email:** [Your email if you want to share it]
-
----
-
-## 🌟 Star This Project
-
-If you find this project useful, please consider giving it a ⭐ on GitHub!
-
-It helps others discover the project and motivates continued development.
-
----
-
-## 🚀 What's Next?
-
-### Roadmap
-
-- [ ] **v2.0:** Add support for Class 3 (necked) droplets
-- [ ] **Web Interface:** Deploy Gradio demo on Hugging Face Spaces
-- [ ] **Mobile App:** iOS/Android app for field measurements
-- [ ] **Real-time Video:** Process video streams for dynamic measurements
-- [ ] **Multi-fluid Support:** Expand to surfactant systems
-- [ ] **Uncertainty Quantification:** Bayesian neural networks for confidence intervals
-
-### Contributing
-
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
----
-
-<div align="center">
-
-**Built with ❤️ for the scientific community**
-
-*Making surface tension measurements accessible, fast, and automated*
-
-[⬆ Back to Top](#neural-tensiometry-ai-powered-surface-tension-measurement)
-
-</div>
